@@ -24,7 +24,7 @@ const navLinks = [
   { href: "/works", label: "works", icon: <Briefcase size={20} /> },
   { href: "/contacts", label: "contacts", icon: <Mail size={20} /> },
   { 
-    href: "https://drive.google.com/file/d/1GcA3gRRHUSIJExJvYVnCMHhcDBlaL3GZ/view?usp=sharing", 
+    href: "https://drive.google.com/file/d/1vCMvNvFZdDj9KnoY4CJzmQqmZ9bTekOC/view?usp=sharing", 
     label: "cv", 
     icon: <FileText size={20} />,
     external: true
