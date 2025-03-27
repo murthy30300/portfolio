@@ -147,7 +147,7 @@ const projects = [
     category: "Full Stack",
     linkedinEmbed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7273646048026275840",
     links: {
-      github: "https://github.com/murthy30300/SlackToSurplus",
+      github: "https://github.com/murthy30300/SlackToSurplus/blob/main/README.md",
       linkedin: "https://www.linkedin.com/posts/vishnu1702_tech-backend-frontend-activity-7273646644485623808-WF7o"
     }
   },

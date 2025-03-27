@@ -80,7 +80,7 @@ const experienceData = [
 const About = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1a1b26] to-[#24283b] text-gray-100 font-sans relative overflow-hidden">
-      {/* Background Dots Pattern */}
+      {/* Background pattern remains the same */}
       <div className="absolute right-0 top-0 w-1/2 h-full">
         <div className="grid grid-cols-6 gap-4 opacity-20">
           {[...Array(60)].map((_, i) => (
@@ -94,69 +94,83 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl"
         >
           {/* Title */}
           <div className="flex items-center gap-4 mb-12">
-  <h1 className="text-4xl font-serif">
-    <span className="text-[#bd93f9]">#</span>about-me
-  </h1>
-  <div className="h-px bg-[#bd93f9] flex-grow"></div>
-</div>
+            <h1 className="text-5xl font-serif">
+              <span className="text-[#bd93f9]">#</span>about-me
+            </h1>
+            <div className="h-px bg-[#bd93f9] flex-grow"></div>
+          </div>
 
-{/* Content Grid */}
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-  {/* Text Content */}
-  <motion.div
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    className="space-y-6"
-  >
-    <h2 className="text-2xl text-[#ff79c6] font-serif mb-4">
-      Hello, I'm Vishnu Murthy!
-    </h2>
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
+            >
+              <h2 className="text-5xl text-[#ff79c6] font-serif mb-6">
+                Hello, I'm Vishnu Murthy!
+              </h2>
 
-    <ul className="text-gray-300 leading-relaxed space-y-2">
-      <li>🌟 Campus Brand Ambassador for Swiggy in 2024</li>
-      <li>🌟 Led teams to build impactful Food Waste Management and Course Management (Spring Boot & Java EE)</li>
-      <li>🌟 2-Star in CodeChef</li>
-      <li>🌟 2X AWS Certified</li>
-      <li>🌟 Strong foundational skills in Cloud Computing</li>
-    </ul>
+              <ul className="text-gray-300 text-[2rem] leading-relaxed space-y-4">
+                <li className="flex items-center gap-2">
+                  <span className="text-[#bd93f9]">🎓</span>
+                  Campus Brand Ambassador for Swiggy in 2024
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#bd93f9]">🗑️</span>
+                  Led teams to build impactful Food Waste Management and Course Management (Spring Boot & Java EE)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#bd93f9]">🧑‍💻</span>
+                  2⭐ in CodeChef
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#bd93f9]">✅</span>
+                  2X AWS Certified
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-[#bd93f9]">☁️</span>
+                  Strong foundational skills in Cloud Computing
+                </li>
+              </ul>
 
-    <div className="grid grid-cols-2 gap-4 text-gray-300 text-sm">
-      <p><strong>Age:</strong> 21</p>
-      <p><strong>Gender:</strong> Male</p>
-      <p><strong>Language:</strong> Telugu (Mother Tongue), English, Hindi</p>
-      <p><strong>Work:</strong> Student</p>
-      <p><strong>Freelance:</strong> Available</p>
-      <p><strong>Country:</strong> India</p>
-    </div>
+              <div className="grid grid-cols-2 gap-6 text-gray-300 text-lg">
+                <p><strong>Age:</strong> 21</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Language:</strong> Telugu, English, Hindi</p>
+                <p><strong>Work:</strong> Student</p>
+                <p><strong>Freelance:</strong> Available</p>
+                <p><strong>Country:</strong> India</p>
+                <p><strong>Date Of Birth:</strong> 17 February 2005</p>
+              </div>
 
-    <div className="flex items-center space-x-6 mt-4">
-      <a href="https://instagram.com/vishnu.murthy.nukala" target="_blank" rel="noopener noreferrer" className="text-[#bd93f9] hover:underline">📷 Instagram</a>
-      <a href="mailto:vishnumurthy1702@gmail.com" className="text-[#ff79c6] hover:underline">📧 Email</a>
-    </div>
-  </motion.div>
+              <div className="flex items-center space-x-6 mt-6">
+                <a href="https://instagram.com/vishnu.murthy.nukala" target="_blank" rel="noopener noreferrer" className="text-[#bd93f9] text-lg hover:underline">📷 Instagram</a>
+                <a href="mailto:vishnumurthy1702@gmail.com" className="text-[#ff79c6] text-lg hover:underline">📧 Email</a>
+              </div>
+            </motion.div>
 
-  {/* Image */}
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.8, delay: 0.4 }}
-    className="relative"
-  >
-    <img
-      src="https://res.cloudinary.com/dovvc3hvb/image/upload/v1738322426/oo_o5qejh.jpg" // Update with correct image path
-      alt="Vishnu Murthy"
-      className="w-full rounded-lg shadow-2xl"
-    />
-    {/* Decorative Elements */}
-    <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-[#bd93f9] rounded-lg opacity-50"></div>
-    <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-[#ff79c6] rounded-lg opacity-50"></div>
-  </motion.div>
-</div>
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              <img
+                src="https://res.cloudinary.com/dovvc3hvb/image/upload/v1738322426/oo_o5qejh.jpg"
+                alt="Vishnu Murthy"
+                className="w-[80%] rounded-lg shadow-2xl"
+              />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-[#bd93f9] rounded-lg opacity-50"></div>
+              <div className="absolute -top-[3rem] right-[7.5rem] w-24 h-24 border-2 border-[#ff79c6] rounded-lg opacity-50"></div>
+            </motion.div>
+          </div>
 
           {/* Education Section */}
           <motion.div
@@ -252,6 +266,51 @@ const About = () => {
             </div>
           </motion.div>
 
+          {/* Skills Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mt-32 max-w-5xl mx-auto"
+          >
+            <div className="flex items-center gap-4 mb-12">
+              <h2 className="text-4xl font-serif">
+                <span className="text-[#ff79c6]">#</span>skills
+              </h2>
+              <div className="h-px bg-[#ff79c6] flex-grow"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(skills).map(([category, { icon, items }], index) => (
+                <motion.div
+                  key={category}
+                  className="bg-[#1e1f2e] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    {icon}
+                    <h3 className="text-xl font-semibold text-white">
+                      {category}
+                    </h3>
+                  </div>
+                  <div className="space-y-3">
+                    {items.map((item) => (
+                      <div
+                        key={item}
+                        className="text-gray-300 bg-[#282a36] px-4 py-2 rounded-lg hover:bg-[#282a36]/80 transition-colors"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Fun Facts Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -285,48 +344,7 @@ const About = () => {
           </motion.div>
         </motion.div>
       </div>
-       <section className="container mx-auto px-6 py-12">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-3xl font-serif mb-8">
-                  <span className="text-[#ff79c6]">#</span>skills
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {Object.entries(skills).map(([category, { icon, items }], index) => (
-                    <motion.div
-                      key={category}
-                      className="bg-[#1e1f2e] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        {icon}
-                        <h3 className="text-xl font-semibold text-white">
-                          {category}
-                        </h3>
-                      </div>
-                      <div className="space-y-3">
-                        {items.map((item) => (
-                          <div
-                            key={item}
-                            className="text-gray-300 bg-[#282a36] px-4 py-2 rounded-lg hover:bg-[#282a36]/80 transition-colors"
-                          >
-                            {item}
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </section>
-            <footer className="border-t border-gray-800/50 mt-12 bg-[#1a1b26]/95">
+      <footer className="border-t border-gray-800/50 mt-12 bg-[#1a1b26]/95">
         <div className="container mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
