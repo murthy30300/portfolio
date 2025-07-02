@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState, useEffect, createContext, useContext } from "react";
 import Home from "./components/ux/Home.jsx";
 import Intro from "./components/ux/Intro";
 import About from "./components/ux/About.jsx";
@@ -7,7 +7,8 @@ import Projects from "./components/ux/Projects.jsx";
 import Contact from "./components/ux/Contact.jsx";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { House, User, Briefcase, Mail, FileText, Menu, X } from "lucide-react";
-
+import ThemeSwitcher from "./components/ui/ThemeSwitcher.jsx";
+import "./index.css";
 const NotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white text-center p-4">
@@ -26,14 +27,41 @@ const navLinks = [
   { href: "/works", label: "works", icon: <Briefcase size={20} /> },
   { href: "/contacts", label: "contacts", icon: <Mail size={20} /> },
   {
-    href: "/VISHNU_NUKALA.pdf",  // Make sure the path is correct
+    href: "./assets/resume/VISHNU_NUKALA.pdf", 
     label: "Resume/CV",
     icon: <FileText size={20} />,
     external: true,
-  },,
+  },
 ];
+const ThemeContext = createContext();
 
+// Create a provider component to wrap your app
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "theme-dark");
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "theme-dark" ? "theme-light" : "theme-dark"));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.body.className = theme; // Apply theme class to body
+  }, [theme]);
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// Create a hook to easily access the theme context
+export const useTheme = () => {
+  return useContext(ThemeContext);
+};
 function App() {
+  const { theme, toggleTheme } = useTheme(); // Access theme and toggleTheme
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -42,10 +70,11 @@ function App() {
 
   return (
     <div>
+      <ThemeSwitcher />
       <BrowserRouter>
-        <div className="min-h-screen bg-gradient-to-b from-[#1a1b26] to-[#24283b] text-gray-100 font-sans">
-          <nav className="fixed top-0 left-0 right-0 bg-[#1a1b26] z-50 border-b border-gray-800/10">
-            <div className="max-w-7xl mx-auto px-6">
+      <div className={`min-h-screen theme-wrapper font-sans`}>
+      <nav className="fixed top-0 left-0 right-0 bg-[#1a1b26] z-50 border-b border-gray-800/10">
+          <div className="max-w-7xl mx-auto px-6">
               <div className="flex justify-between items-center py-4">
                 <motion.h1
                   initial={{ opacity: 0 }}
@@ -93,7 +122,7 @@ function App() {
                     <motion.a
                       key={link.href}
                       href={link.href}
-                /*block */      className=" text-gray-300 hover:text-[#ff79c6] transition-colors duration-300 py-2 flex items-center gap-2"
+                /*block */      className="block text-gray-300 hover:text-[#ff79c6] transition-colors duration-300 py-2 flex items-center gap-2"
                       whileHover={{ scale: 1.1, textDecoration: "underline" }}
                       whileTap={{ scale: 0.95 }}
                       {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
@@ -112,8 +141,18 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/works" element={<Projects />} />
             <Route path="/contacts" element={<Contact />} />
-            <Route path="*" element={<NotFound />} /> {/* Wildcard route for unmatched URLs */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
+
+          {/* Fixed Theme Toggle Button at the Bottom */}
+          {/* <div className="fixed bottom-4 right-4 z-50">
+            <button
+              onClick={toggleTheme}
+              className="px-4 py-2 bg-[#bd93f9] text-white rounded-lg hover:bg-[#a178f1] transition-colors shadow-lg"
+            >
+              {theme === "theme-dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            </button>
+          </div> */}
         </div>
       </BrowserRouter>
     </div>

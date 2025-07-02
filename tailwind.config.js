@@ -10,3 +10,19 @@ export default {
   plugins: [],
 }
 
+
+module.exports = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        skin: {
+          base: "var(--bg-color)",
+          text: "var(--text-color)",
+          primary: "var(--primary-color)",
+        },
+      },
+    },
+  },
+  plugins: [],
+};

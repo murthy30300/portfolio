@@ -1,31 +1,183 @@
+/* Tailwind Base */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base Layer */
 @layer base {
   body {
     @apply antialiased;
   }
 }
 
+/* Utility Layer */
 @layer utilities {
   .cursor-block {
     cursor: none;
   }
-  
-  .cursor-underscore {
-    cursor: none;
-  }
-  
+
   .cursor-pointer {
     cursor: pointer;
   }
-  
+
   .cursor-crosshair {
     cursor: crosshair;
   }
 }
 
+/* ================== THEME & GLOBAL VARIABLES ================== */
+
+/* Default (Light Theme) */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --primary-color: #4f46e5;
+  --secondary-color: #673ab7;
+  --accent-color: #ff9800;
+  --card-background: #fff;
+  --border-color: #ddd;
+  --cursor-url: auto;
+}
+[data-theme="red"] {
+  --bg-color: #ffebee;
+  --text-color: #b71c1c;
+}
+
+[data-theme="green"] {
+  --bg-color: #e8f5e9;
+  --text-color: #1b5e20;
+}
+
+[data-theme="pink"] {
+  --bg-color: #fce4ec;
+  --text-color: #880e4f;
+}
+
+[data-theme="orange"] {
+  --bg-color: #fff3e0;
+  --text-color: #e65100;
+}
+body {
+  background-color: var(--bg-color, #ffffff); /* Fallback to white if not set */
+  color: var(--text-color, #000000); /* Fallback to black if not set */
+  cursor: var(--cursor-url, auto); /* Use the custom cursor or fallback to auto */
+  transition: all 0.3s ease-in-out;
+}
+
+button, a, input[type="button"], input[type="submit"] {
+  cursor: pointer; /* Ensure buttons and links have a pointer cursor */
+}
+
+/* Theme Overrides */
+body[data-theme="red"] {
+  --bg-color: #fff0f0;
+  --text-color: #3b0d0c;
+  --primary-color: #e11d48;
+  --cursor-url: url('/cursors/red.cur'), auto;
+}
+
+body[data-theme="green"] {
+  --bg-color: #f0fff4;
+  --text-color: #064e3b;
+  --primary-color: #10b981;
+  --cursor-url: url('/cursors/green.cur'), auto;
+}
+
+body[data-theme="pink"] {
+  --bg-color: #fff5f7;
+  --text-color: #702459;
+  --primary-color: #d946ef;
+  --cursor-url: url('/cursors/pink.cur'), auto;
+}
+
+body[data-theme="orange"] {
+  --bg-color: #fffaf0;
+  --text-color: #7c2d12;
+  --primary-color: #f97316;
+  --cursor-url: url('/cursors/orange.cur'), auto;
+}
+
+/* Optional Dark & Light Modes */
+body.theme-dark {
+  --bg-color: #1a1b26;
+  --text-color: #f8f8f2;
+  --primary-color: #bd93f9;
+  --secondary-color: #ff79c6;
+  --accent-color: #50fa7b;
+  --card-background: #1e1f2e;
+  --border-color: #444;
+}
+
+body.theme-light {
+  --bg-color: #f8f8f2;
+  --text-color: #1a1b26;
+  --primary-color: #007bff;
+  --secondary-color: #673ab7;
+  --accent-color: #ff9800;
+  --card-background: #fff;
+  --border-color: #ddd;
+}
+
+/* ================== BASE STYLES ================== */
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  cursor: var(--cursor-url);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Interactive Elements */
+button, a, input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+
+/* ================== THEMING CLASSES ================== */
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color);
+}
+
+/* ================== COMPONENT OVERRIDES ================== */
+
+.theme-wrapper {
+  background: linear-gradient(to bottom, var(--bg-color), var(--card-background));
+  color: var(--text-color);
+}
+
+/* Navbar Example */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: #1a1b26;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+/* Optional Animation */
 @keyframes blink {
   0%, 50% {
     opacity: 1;

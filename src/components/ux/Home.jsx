@@ -13,7 +13,7 @@ import {
   Server,
   Cloud,
 } from "lucide-react";
-
+import { useTheme } from "../../App";
 const skills = {
   Languages: {
     icon: <Code2 className="w-6 h-6 text-[#bd93f9]" />,
@@ -51,135 +51,68 @@ const navLinks = [
 
 
 export default function Home() {
+
+  const { theme, toggleTheme } = useTheme(); // Use the theme hook
+
   const { scrollYProgress } = useScroll();
   const typedRef = useRef(null);
   const typeIam = useRef(null);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  useEffect(() => {
-    if (typedRef.current) {
-      const typed = new Typed(typedRef.current, {
-        strings: [
-          "Currently working on Portfolio",
-          "Open to Freelance",
-          "Available for Hire",
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        loop: true,
-      });
-  
-      return () => {
-        typed.destroy();
-      };
-    }
-  }, []);
-  
-  useEffect(() => {
-    if (typeIam.current) {
-      const iam = new Typed(typeIam.current, {
-        strings: [
-          "Web Designer",
-          "Back-end Developer",
-          "Data Engineer Enthusiast",
-        ],
-        typeSpeed: 50,
-        backSpeed: 40,
-        loop: true,
-      });
-  
-      return () => {
-        iam.destroy();
-      };
-    }
-  }, []);
   
   return (
-    <div className="min-h-screen bg-[#1a1b26] text-gray-300">
-      {/* Navigation */}
-      {/* <nav className="fixed top-0 left-0 right-0 bg-[#1a1b26] z-50 border-b border-gray-800/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center py-4">
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="text-2xl sm:text-3xl font-bold"
-            >
-              <span className="text-[#bd93f9]">Nukala Venkata Vishnu</span>{" "}
-              <span className="text-[#50fa7b]">Murthy</span>
-            </motion.h1>
+<div className={`min-h-screen ${theme} text-gray-300`}>
+      
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex gap-8"
-            >
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-300 hover:text-[#ff79c6] transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </nav> */}
+     
+<section className="pt-32 px-6" id="home">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="space-y-6"
+      >
+        <h2 className="text-6xl font-bold">
+          <span className="text-primary-color">Hello Visitor... 👋</span>
+          <br />
+          <span className="text-secondary-color">Mr. Vishnu Murthy</span>
+        </h2>
+        <p className="text-lg text-gray-400">
+          I'm a passionate and results-oriented developer with a strong interest in data engineering and cloud technologies. I enjoy building scalable and efficient web applications and solving complex problems.
+        </p>
+        <p className="text-lg text-gray-400">
+          {/* Add a brief summary of your background or key skills here */}
+          Pursuing a Bachelor of Technology in Computer Science with Data Science and Big Data Analytics at K L University.
+        </p>
+        <motion.button
+          className="px-8 py-3 bg-primary-color text-white rounded-lg font-medium hover:bg-opacity-80 transition-colors shadow-lg"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => window.open("https://t.me/vishnu1702")}
+        >
+          Contact me!!
+        </motion.button>
+      </motion.div>
 
-      {/* Hero Section */}
-      <section className="pt-32 px-6" id="home">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              <h2 className="text-6xl font-bold">
-                {/* <span className="text-[#bd93f9]">Data engineer</span>
-                <br />
-                <span className="text-[#ff79c6]">Enthusiast</span> */}
-                  <span ref={typeIam} className="text-[#ff79c6]"></span>
-              </h2>
-              <p className="text-lg text-gray-400">
-                I can design responsive websites where technologies meet creativity
-              </p>
-              <motion.button
-                className="px-8 py-3 bg-[#bd93f9] text-white rounded-lg font-medium hover:bg-[#a178f1] transition-colors shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.open("https://t.me/vishnu1702")}
-              >
-                Contact me!!
-              </motion.button>
-            </motion.div>
-
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <img
-                src="https://res.cloudinary.com/dovvc3hvb/image/upload/v1734166398/tsyxmpfmpv5wfwkzraro.jpg"
-                alt="Developer"
-                className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
-              />
-              <div className="absolute bottom-4 left-4 bg-[#1a1b26]/90 p-4 backdrop-blur-sm rounded-lg border border-[#bd93f9]/30">
-                <span ref={typedRef} className="text-[#ff79c6]"></span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+      <motion.div
+        className="relative cursor-pointer"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <img
+          src = "https://res.cloudinary.com/dovvc3hvb/image/upload/v1747057083/hero%20section.jpg"
+          // src="https://res.cloudinary.com/dovvc3hvb/image/upload/v1734166398/tsyxmpfmpv5wfwkzraro.jpg"
+          alt="Developer"
+          className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
+        />
+        {/* Removed the scrolling text div */}
+      </motion.div>
+    </div>
+  </div>
+</section>
       {/* Quote Section */}
       <section className="container mx-auto px-6 py-24">
         <motion.div
@@ -189,9 +122,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          {/* <p className="text-2xl font-serif text-gray-100 italic">
-            "Peace and contentment blossom when each soul tends its own garden, leaving no room for the burden of another's toil"
-          </p> */}
+          
           <p className="text-2xl font-serif text-gray-100 italic">
             "Success comes from small efforts repeated every day, driven by persistence, resilience, and the belief that each step brings you closer to your goal."
           </p>
@@ -199,79 +130,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Projects Section */}
-      {/* <section className="container mx-auto px-6 py-12" id="works">
-        <motion.div
-          className="border border-[#0ea5e9]/30 p-8 rounded-lg bg-[#1e1f2e]/50 backdrop-blur-sm"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-serif mb-8">
-            <span className="text-[#ff79c6]">#</span>projects
-            <motion.span
-              className="float-right text-sm bg-[#ff79c6]/10 px-4 py-2 rounded-lg hover:bg-[#ff79c6]/20 transition-colors cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View all →
-            </motion.span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                className="bg-[#1e1f2e] rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 transform group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1e1f2e] to-transparent opacity-60" />
-                </div>
-                <div className="p-6">
-                  <div className="text-sm text-[#bd93f9] mb-2">
-                    {project.tech}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex gap-4">
-                    {project.links.linkedin && (
-                      <motion.button
-                        className="flex items-center gap-2 px-4 py-2 bg-[#bd93f9]/10 rounded-lg hover:bg-[#bd93f9]/20 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {window.open(project.links.linkedin)}}
-                      >
-                        LinkedIn <Linkedin className="w-4 h-4" />
-                      </motion.button>
-                    )}
-                    {project.links.cached && (
-                      <motion.button
-                        className="flex items-center gap-2 px-4 py-2 bg-[#ff79c6]/10 rounded-lg hover:bg-[#ff79c6]/20 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        Cached <ExternalLink className="w-4 h-4" />
-                      </motion.button>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section> */}
+     
 
       {/* Skills Section */}
       <section className="container mx-auto px-6 py-12">
@@ -316,57 +175,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Contacts Section */}
-      {/* <section className="container mx-auto px-6 py-12" id="contacts">
-        <motion.div
-          className="border border-[#0ea5e9]/30 p-8 rounded-lg bg-[#1e1f2e]/50 backdrop-blur-sm"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-serif mb-8">
-            <span className="text-[#ff79c6]">#</span>contacts
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                I'm interested in freelance opportunities. However, if you
-                have other request or question, don't hesitate to contact me
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-serif mb-6">Message me here</h3>
-              <div className="space-y-4">
-                <motion.a
-                  href="https://github.com/murthy30300"
-                  className="flex items-center gap-3 text-gray-300 hover:text-[#ff79c6] transition-colors p-3 rounded-lg hover:bg-[#282a36]"
-                  whileHover={{ x: 10 }}
-                >
-                  <Github className="w-5 h-5" />
-                  <span>github.com/murthy30300</span>
-                </motion.a>
-                <motion.a
-                  href="https://www.linkedin.com/in/vishnu1702"
-                  className="flex items-center gap-3 text-gray-300 hover:text-[#ff79c6] transition-colors p-3 rounded-lg hover:bg-[#282a36]"
-                  whileHover={{ x: 10 }}
-                >
-                  <Linkedin className="w-5 h-5" />
-                  <span>linkedin.com/in/vishnu1702</span>
-                </motion.a>
-                <motion.a
-                  href="vishnumurthy1702@gmail.com"
-                  className="flex items-center gap-3 text-gray-300 hover:text-[#ff79c6] transition-colors p-3 rounded-lg hover:bg-[#282a36]"
-                  whileHover={{ x: 10 }}
-                >
-                  <Mail className="w-5 h-5" />
-                  <span>vishnumurthy1702@gmail.com</span>
-                </motion.a>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section> */}
 
       {/* Footer */}
       <footer className="border-t border-gray-800/50 mt-12 bg-[#1a1b26]/95">
